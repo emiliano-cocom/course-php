@@ -44,9 +44,46 @@
     }
 
 
+    // traits
+    trait LatinAmerican
+    {
+        public function greetingLatinAmerican()
+        {
+            echo 'this is a greeting latin american';
+        }
+    }
+
+    trait UnitedKingdom
+    {
+        public function greetingUnitedKingdom()
+        {
+            echo 'this is a greeting united kingdom';
+        }
+    }
+
+    trait A 
+    {
+        public function greeting()
+        {
+            echo "Hello from trait A";
+        }
+    }
+
+    trait B 
+    {
+        protected function greeting()
+        {
+            echo "Hello from trait B";
+        }
+
+        abstract public function converse();
+    }
+
     // inheritance
     class Mexican extends Person
     {
+        use LatinAmerican;
+
         public $departament;
         public $city;
 
@@ -59,8 +96,13 @@
     }
 
     // inheritance
-    class Peruvian extends Person
+    class English extends Person
     {
+        use UnitedKingdom, A, B {
+            B::greeting insteadOf A;
+            B::greeting as public;
+        }
+
         public $commune;
         public $region;
 
@@ -69,5 +111,10 @@
         {
             $this->firstLastName = $secondLastName;
             $this->secondLastName = $firstLastName;
+        }
+
+        public function converse()
+        {
+            echo "I am a english and you ?";
         }
     }

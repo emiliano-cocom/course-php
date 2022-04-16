@@ -23,13 +23,18 @@
     $mexican->setLastName('Martinez', 'Lopez');
     echo '<br>';
 
-    $peruvian = new Peruvian;
-    $peruvian->setLastName('Martinez', 'Lopez');
-
+    $english = new English;
+    $english->setLastName('Martinez', 'Lopez');
+    $english->greetingUnitedKingdom();
+    echo '<br>';
+    $english->greeting();
+    echo '<br>';
+    $english->converse();
+    echo '<br>';
     echo $mexican->getLastName().'<br>';
-    echo $peruvian->getLastName().'<br>';
+    echo $english->getLastName().'<br>';
 
     var_dump($mexican);
     echo '<br>';
-    var_dump($peruvian);
+    var_dump($english);
 ?>
