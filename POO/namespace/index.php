@@ -1,13 +1,17 @@
 <?php
 
-    use folder1\Human;
-    use folder2\Human as Human2;
+    use Controllers\CourseController;
+    use Models\Course;
 
-    require_once('folder1/Human.php');
-    require_once('folder2/Human.php');
+    spl_autoload_register(function($class) {
+        // echo str_replace('\\', '/', $class).'.php';
+        if (file_exists(str_replace('\\', '/', $class).'.php')) {
+            require_once(str_replace('\\', '/', $class).'.php');
+        }
+    });
 
-    $humanObject = new Human;
-    $humanObject->greeting();
+    $course = new Course;
+    $course->greeting();
     echo '<br>';
-    $human2Object = new Human2;
-    $human2Object->greeting();
+    $courseController = new CourseController;
+    $courseController->greeting();
